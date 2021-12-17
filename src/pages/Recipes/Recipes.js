@@ -1,12 +1,13 @@
-import React from 'react'
-import RecipeList from '../../components/recipe_list/RecipeList'
-import useFetch from '../../hooks/useFetch'
-import "./Home.css"
-const Home = () => {
+import React from 'react';
+import RecipeList from '../../components/recipe_list/RecipeList';
+import useFetch from '../../hooks/useFetch';
+import './Recipes.css';
+
+const Recipes = ({ recipes }) => {
     const URL = 'http://localhost:3000/recipes'
     const [data, isPending, error] = useFetch(URL)
     return (
-        <div className="home">
+        <div>
             {
                 error && <p className="error">{error}</p>
             }
@@ -20,4 +21,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Recipes

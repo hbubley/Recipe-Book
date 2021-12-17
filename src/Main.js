@@ -10,6 +10,8 @@ import {
     Router,
 } from "react-location";
 import MissingPage from './pages/404/MissingPage';
+import useFetch from './hooks/useFetch';
+import Recipes from './pages/Recipes/Recipes';
 
 const location = new ReactLocation();
 const Main = () => {
@@ -26,6 +28,19 @@ const Main = () => {
             path: '/search',
             element: <Search />
         },
+        // {
+        //     path: '/recipe',
+        //     element: <Recipes />,
+        //     // children: [
+        //     //     {
+        //     //         path: '/',
+        //     //     },
+        //     //     {
+        //     //         path: ':id',
+        //     //         element: <Recipe />
+        //     //     },
+        //     // ]
+        // },
         {
             path: '/recipe/:id',
             element: <Recipe />
