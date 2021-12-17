@@ -1,17 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Navbar from './components/navbar/Navbar';
 import Create from './pages/create/Create';
 import Home from './pages/home/Home';
 import Recipe from './pages/recipe/Recipe';
 import Search from './pages/search/Search';
 import {
-    Link,
-    MakeGenerics,
     Outlet,
     ReactLocation,
     Router,
-    useMatch,
 } from "react-location";
 import MissingPage from './pages/404/MissingPage';
 
