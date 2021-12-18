@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMatch } from 'react-location'
 import useFetch from '../../hooks/useFetch'
-
+import './Recipe.css'
 const Recipe = () => {
     const { params: { id } } = useMatch()
     const [data, isPending, error] = useFetch(`http://localhost:3000/recipes/${id}`);
