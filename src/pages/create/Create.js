@@ -21,6 +21,14 @@ const Create = () => {
         setIngredients(ingredientsCopy)
     }
 
+    const deleteRow = (index) => {
+        const ingredientsCopy = [...ingredients];
+        console.log("🚀 ~ file: Create.js ~ line 26 ~ deleteRow ~ ingredientsCopy", ingredientsCopy)
+        const remove = ingredientsCopy.splice(index, 1)
+        console.log("🚀 ~ file: Create.js ~ line 28 ~ deleteRow ~ remove", remove)
+        setIngredients(ingredientsCopy);
+    }
+
     return (
         <div className="create">
             <h2 className="page-title">Add a New Recipe</h2>
@@ -38,7 +46,7 @@ const Create = () => {
                     <div className="ingredients">
                         {ingredients.map((ingredient, index) => {
                             return (
-                                <div className="ingredient">
+                                <div className="ingredient" key={index}>
                                     <span className="ingredient-input">
                                         <input
                                             type="text"
@@ -47,7 +55,7 @@ const Create = () => {
                                         />
                                     </span>
                                     <span className="ingredient-delete">
-                                        <button className="delete-ingredient">x</button>
+                                        <button className="delete-ingredient" onClick={() =>deleteRow(index)}>x</button>
                                     </span>
                                 </div>
                             )
