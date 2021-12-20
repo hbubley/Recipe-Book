@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-location'
+import SearchBar from '../search-bar/SearchBar'
 import './Navbar.css'
 const Navbar = () => {
     return (
@@ -10,6 +11,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className='nav-items'>
+                <SearchBar />
                 <Link className="nav-item" to="/">Home</Link>
                 <Link className="nav-item" to="/create">Create</Link>
                 <Link className="nav-item" to="/search">Search</Link>

@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-location';
 import './SearchBar.css'
 const SearchBar = () => {
-    const [term, setTerm] = useState()
+    //Make this a magnifying glass that turns into an input field on click!
+    const navigate = useNavigate();
+    const [term, setTerm] = useState();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        navigate({to: `/search?q=${term}`})
+    }
     return (
         <div className="searchbar">
-            <form onSubmit={ }>
-                <label htmlFor="search">Search:</label>
-                <input type="text" id="search" onChange={(e) => setTerm(e.target.value)} />
+            <form onSubmit={handleSubmit}>
+                <input type="text" id="search" onChange={(e) => setTerm(e.target.value)} placeholder='Search...'/>
             </form>
         </div>
     )

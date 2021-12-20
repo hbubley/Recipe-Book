@@ -13,7 +13,7 @@ const Create = () => {
         if (data && !error) {
             navigate({ to: '/', replace: true })
         }
-    }, [data, navigate])
+    }, [data, error, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault();
