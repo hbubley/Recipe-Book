@@ -7,24 +7,30 @@
     box-sizing: border-box;
 }
 
-.recipe ul {
+.recipe_list {
     display: flex;
     padding: 0;
     justify-content: center;
 }
 
-.recipe li {
+.recipe_list_item {
     list-style-type: none;
     margin-right: 10px;
     color: #777;
 }
 
-.recipe li::after{
+.recipe_list_item::after{
     content: ',';
 }
 
-.recipe li:last-child::after{
+.recipe_list_item:last-child::after{
     content: '.';
+}
+
+.page_title {
+    text-align: center;
+    margin: 40px auto;
+    color: #333;
 }
 
 .method{

@@ -1,11 +1,10 @@
 import React from 'react'
 import { useMatch } from 'react-location'
 import useFetch from '../../hooks/useFetch'
-import './Recipe.css'
+import styles from './Recipe.module.css'
 const Recipe = () => {
     const { params: { id } } = useMatch()
     const [data, isPending, error] = useFetch(`http://localhost:3000/recipes/${id}`);
-    console.log("🚀 ~ file: Recipe.js ~ line 8 ~ Recipe ~ data", data)
 
     return (
         <div>
@@ -17,17 +16,17 @@ const Recipe = () => {
             }
             {
                 data && (
-                    <div className='recipe'>
-                        <h1 className="page-title">{data.title}</h1>
+                    <div className={styles.recipe}>
+                        <h1 className={styles.page_title}>{data.title}</h1>
                         <p>Takes {data.cookingTime} to cook.</p>
-                        <ul>
+                        <ul className={styles.recipe_list}>
                             {
                                 data.ingredients.map(ingredient => (
-                                    <li key={ingredient}>{ingredient}</li>
+                                    <li className={styles.recipe_list_item} key={ingredient}>{ingredient}</li>
                                 ))
                             }
                         </ul>
-                        <p className="method">{data.method}</p>
+                        <p className={styles.method}>{data.method}</p>
                     </div>
                 )
             }

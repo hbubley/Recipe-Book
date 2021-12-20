@@ -3,6 +3,9 @@ import { Link } from 'react-location';
 import './RecipeList.css';
 
 const RecipeList = ({ recipes }) => {
+    if(recipes.length === 0){
+        return <div>No recipes to load...</div>
+    }
     return (
         <div className="recipe-list">
             {
