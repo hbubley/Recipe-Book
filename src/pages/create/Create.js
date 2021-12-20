@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Navigate, useNavigate } from 'react-location';
+import useFetch from '../../hooks/useFetch';
 import "./Create.css"
 const Create = () => {
     const [title, setTitle] = useState('');
     const [method, setMethod] = useState('');
     const [cookingTime, setCookingTime] = useState('');
     const [ingredients, setIngredients] = useState([{}])
+    const [data, , error, postData] = useFetch('http://localhost:3000/recipes', "POST")
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (data && !error) {
+            navigate({ to: '/', replace: true })
+        }
+    }, [data, navigate])
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, method, cookingTime)
+        postData({ title, method, cookingTime: `${cookingTime} minutes`, ingredients })
     }
 
     const handleRowChange = (value, index) => {
@@ -32,7 +42,7 @@ const Create = () => {
     return (
         <div className="create">
             <h2 className="page-title">Add a New Recipe</h2>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <label>
                     <span>Recipe title:</span>
                     <input
@@ -47,6 +57,9 @@ const Create = () => {
                         {ingredients.map((ingredient, index) => {
                             return (
                                 <div className="ingredient" key={index}>
+                                    <span>
+                                        <p>{index + 1}.</p>
+                                    </span>
                                     <span className="ingredient-input">
                                         <input
                                             type="text"
@@ -55,7 +68,7 @@ const Create = () => {
                                         />
                                     </span>
                                     <span className="ingredient-delete">
-                                        <button className="delete-ingredient" onClick={() =>deleteRow(index)}>x</button>
+                                        <button className="delete-ingredient" onClick={() => deleteRow(index)}>x</button>
                                     </span>
                                 </div>
                             )
@@ -78,7 +91,7 @@ const Create = () => {
                         value={cookingTime}
                     />
                 </label>
-                <button className="button"><p>Submit</p></button>
+                <button className="button" onClick={handleSubmit}><p>Submit</p></button>
             </form>
         </div>
     )
