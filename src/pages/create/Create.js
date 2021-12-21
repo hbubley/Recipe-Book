@@ -7,7 +7,7 @@ const Create = () => {
     const [method, setMethod] = useState('');
     const [cookingTime, setCookingTime] = useState('');
     const [ingredients, setIngredients] = useState([{}])
-    const [data, , error, postData] = useFetch('http://localhost:3000/recipes', "POST")
+    const [data, , error, postData] = useFetch('http://localhost:3001/recipes', "POST")
     const navigate = useNavigate();
     useEffect(() => {
         if (data && !error) {
@@ -26,12 +26,14 @@ const Create = () => {
         console.log("🚀 ~ file: Create.js ~ line 16 ~ handleRowChange ~ ingredientsCopy", ingredientsCopy)
         setIngredients(ingredientsCopy);
     }
-    const addRow = () => {
+    const addRow = (e) => {
+        e.preventDefault()
         const ingredientsCopy = [...ingredients, { value: "" }];
         setIngredients(ingredientsCopy)
     }
 
-    const deleteRow = (index) => {
+    const deleteRow = (e, index) => {
+        e.preventDefault();
         const ingredientsCopy = [...ingredients];
         console.log("🚀 ~ file: Create.js ~ line 26 ~ deleteRow ~ ingredientsCopy", ingredientsCopy)
         const remove = ingredientsCopy.splice(index, 1)
@@ -68,7 +70,7 @@ const Create = () => {
                                         />
                                     </span>
                                     <span className="ingredient-delete">
-                                        <button className="delete-ingredient" onClick={() => deleteRow(index)}>x</button>
+                                        <button className="delete-ingredient" disabled={ingredients.length <= 1} onClick={(e) => deleteRow(e, index)}>x</button>
                                     </span>
                                 </div>
                             )

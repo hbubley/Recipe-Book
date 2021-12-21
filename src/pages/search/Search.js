@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch'
 import styles from './Search.module.css'
 const Search = () => {
     const { q } = useSearch()
-    const url = `http://localhost:3000/recipes?q=${q}`
+    const url = `http://localhost:3001/recipes?q=${q}`
     const [data, isPending, error] = useFetch(url);
     console.log("🚀 ~ file: Search.js ~ line 10 ~ Search ~ data", data)
 

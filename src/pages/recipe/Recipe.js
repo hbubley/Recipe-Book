@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import styles from './Recipe.module.css'
 const Recipe = () => {
     const { params: { id } } = useMatch()
-    const [data, isPending, error] = useFetch(`http://localhost:3000/recipes/${id}`);
+    const [data, isPending, error] = useFetch(`http://localhost:3001/recipes/${id}`);
 
     return (
         <div>

@@ -39,7 +39,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
-    flex-grow: 0;
+    align-items: center;
 }
 
 
@@ -50,10 +50,10 @@
 
 .delete-ingredient{
     display: block;
-    /* width: 100px; */
+    width: 50px;
     font-size: 1em;
     color: #fff;
-    padding: 8px 20px;
+    /* padding: 8px 20px; */
     border: 0;
     border-radius: 4px;
     background-color: #E0AFA0;

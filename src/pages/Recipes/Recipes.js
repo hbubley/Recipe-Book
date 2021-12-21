@@ -3,7 +3,7 @@ import RecipeList from '../../components/recipe_list/RecipeList';
 import useFetch from '../../hooks/useFetch';
 
 const Recipes = ({ recipes }) => {
-    const URL = 'http://localhost:3000/recipes'
+    const URL = 'http://localhost:3001/recipes'
     const [data, isPending, error] = useFetch(URL)
     return (
         <div>

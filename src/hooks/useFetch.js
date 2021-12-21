@@ -5,7 +5,7 @@ const useFetch = (url, method = "GET") => {
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null)
     const [options, setOptions] = useState(null);
-
+    
     const fetchData = useCallback(async (fetchOptions) => {
         setIsPending(true);
 
